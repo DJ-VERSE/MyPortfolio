@@ -11,37 +11,34 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <link href="animated.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.0/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>">
-	<script
-		src="https://code.jquery.com/jquery-3.4.1.js"
-		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-digimedia-v1.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-	<script>
-		function SubForm (){
-			$.ajax({
-				url:"https://api.apispreadsheets.com/data/ag9YKS5ulp4ydgdx/",
-				type:"post",
-				data:$("#myForm").serializeArray(),
-				success: function(){
-					alert("Form Data Submitted :)")
-				},
-				error: function(){
-					alert("There was an error :(")
-				}
-			});
-		}
-	</script>
+
+    <script>
+        function SubForm() {
+            $.ajax({
+                url: "https://api.apispreadsheets.com/data/ag9YKS5ulp4ydgdx/",
+                type: "post",
+                data: $("#myForm").serializeArray(),
+                success: function () {
+                    alert("Form Data Submitted :)")
+                },
+                error: function () {
+                    alert("There was an error :(")
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -49,43 +46,43 @@
         <div class="container1">
             <nav>
                 <div class="nav-bar">
-                    <i class='bx bx-menu sidebarOpen' ></i>
+                    <i class='bx bx-menu sidebarOpen'></i>
                     <span class="logo navLogo"><a style="color: #ff004f;" href="#">Darshan</a></span>
-        
+
                     <div class="menu">
                         <div class="logo-toggle">
                             <span class="logo"><a href="#">Darshan</a></span>
                             <i class='bx bx-x siderbarClose'></i>
                         </div>
-        
+
                         <ul class="nav-links">
                             <li>
-                                <a  id="navcom" href="#about"> About</a>
+                                <a id="navcom" href="#about"> About</a>
                             </li>
                             <li>
-                                <a  id="navcom" href="#services">Services</a>
+                                <a id="navcom" href="#services">Services</a>
                             </li>
                             <li>
-                                <a  id="navcom" href="#portfolio">Careers</a>
+                                <a id="navcom" href="#portfolio">Careers</a>
                             </li>
                             <li>
                                 <a id="navcom" href="#contact">Contact</a>
                             </li>
                         </ul>
                     </div>
-        
+
                     <div class="darkLight-searchBox">
                         <div class="dark-light">
                             <i class='bx bx-moon moon'></i>
                             <i class='bx bx-sun sun'></i>
                         </div>
-        
+
                         <div class="searchBox">
-                           <div class="searchToggle">
-                            <i class='bx bx-x cancel'></i>
-                            <i class='bx bx-search search'></i>
-                           </div>
-        
+                            <div class="searchToggle">
+                                <i class='bx bx-x cancel'></i>
+                                <i class='bx bx-search search'></i>
+                            </div>
+
                             <div class="search-field">
                                 <input type="text" placeholder="Search...">
                                 <i class='bx bx-search'></i>
@@ -94,9 +91,11 @@
                     </div>
                 </div>
             </nav>
-            <div class="header-text" data-aos="fade-right">
-                <p>Software Engineer</p>
-                <h1>Welcome To The<br><span style="-webkit-text-fill-color:  #ff004f;">🧑🏻‍💻DJ-VERSE🌌</span></h1>
+            <div class="header-text">
+                <p data-aos="fade-down" data-aos-delay="1300">Software Engineer</p>
+                <h1 data-aos="fade-right" data-aos-delay="200">Welcome To The</h1>
+                <h1 data-aos="fade-left" data-aos-delay="700"><span
+                        style="-webkit-text-fill-color:  #ff004f;">🧑🏻‍💻DJ-VERSE🌌</span></h1>
             </div>
         </div>
     </div>
@@ -104,10 +103,10 @@
     <div id="about">
         <div class="container1">
             <div class="row">
-                <div class="about-col-1">
+                <div class="about-col-1" data-aos="fade-right">
                     <img src="DSC_0553.jpg">
                 </div>
-                <div class="about-col-2">
+                <div class="about-col-2" data-aos="fade-left">
                     <h1 class="sub-title">About Me</h1>
                     <p class="intro">hello<br>I'm Darshan Vegad <br>
                         I'm Software Devloper<br>
@@ -124,23 +123,28 @@
                     </div>
                     <div class="tab-contents active-tab" id="skills">
                         <ul>
-                            
-                            <li><span class="span-skill">Web Development</span><br>DJango<br>Angular + Firebase<br>PHP<br></li>
+
+                            <li><span class="span-skill">Web Development</span><br>DJango<br>Angular +
+                                Firebase<br>PHP<br></li>
                             <li><span class="span-skill">App Development</span><br>Native Apps using Flutter</li>
                         </ul>
                     </div>
                     <div class="tab-contents" id="experience">
                         <ul>
-                            <li><span class="span-skill">2023 - Current</span><br>UI/UX Design training at Mastermind Institute</li>
+                            <li><span class="span-skill">2023 - Current</span><br>UI/UX Design training at Mastermind
+                                Institute</li>
                             <li><span class="span-skill">2021-2022</span><br>Web app Development</li>
                             <li><span class="span-skill">2021-2022</span><br>Internship at BPTI goverment collage.</li>
                         </ul>
                     </div>
                     <div class="tab-contents" id="education">
                         <ul>
-                            <li><span class="span-skill">2024</span><br>UI/UX Design training at Mastermind Institute</li>
-                            <li><span class="span-skill">2022-2024</span><br>IT From Sir Bhavsinhji PolyTechnic Institute at Bhavnagar</li>
-                            <li><span class="span-skill">2024-2027</span><br>IT From Shantilal Shah Engineering Collage at bhavnagar</li>
+                            <li><span class="span-skill">2024</span><br>UI/UX Design training at Mastermind Institute
+                            </li>
+                            <li><span class="span-skill">2022-2024</span><br>IT From Sir Bhavsinhji PolyTechnic
+                                Institute at Bhavnagar</li>
+                            <li><span class="span-skill">2024-2027</span><br>IT From Shantilal Shah Engineering Collage
+                                at bhavnagar</li>
                         </ul>
                     </div>
                 </div>
@@ -150,24 +154,24 @@
     <!-- ----------SERVICES---------- -->
     <div id="services">
         <div class="container1">
-            <h1 class="sub-title">My Services</h1>
+            <h1 class="sub-title" data-aos="fade-right">My Services</h1>
             <div class="services-list">
-                <div>
+                <div data-aos="fade-down" >
                     <i class="fa-brands fa-android"></i>
                     <h2>App Development</h2>
                     <p></p>
                     <a href="#">Learn more</a>
                 </div>
-                <div>
-                    <i  class="fa-solid fa-code"></i>
+                <div data-aos="fade-down">
+                    <i class="fa-solid fa-code"></i>
                     <h2>Web Development</h2>
                     <p></p>
                     <a href="#">Learn more</a>
 
                 </div>
-                <div>
+                <div data-aos="fade-down">
 
-                    <i  class="fa-solid fa-crop-simple"></i>
+                    <i class="fa-solid fa-crop-simple"></i>
                     <h2>UI/UX Design</h2>
                     <p></p>
                     <a href="#">Learn more</a>
@@ -178,9 +182,9 @@
     <!-- ----------PORTFOLIO--------- -->
     <div id="portfolio">
         <div class="container1">
-            <h1 class="sub-title">My Works</h1>
+            <h1 class="sub-title" data-aos="fade-right">My Works</h1>
             <div class="work-list">
-                <div class="work">
+                <div class="work" data-aos="fade-down" >
                     <img src="work-1.png" alt="">
                     <div class="layer">
                         <h2>Social Media App</h2>
@@ -188,7 +192,7 @@
                         <a href="#"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
-                <div class="work">
+                <div class="work" data-aos="fade-down" >
                     <img src="work-2.png" alt="">
                     <div class="layer">
                         <h2>Music App</h2>
@@ -196,7 +200,7 @@
                         <a href="#"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
-                <div class="work">
+                <div class="work" data-aos="fade-down" >
                     <img src="work-3.png" alt="">
                     <div class="layer">
                         <h2>Online Shopping App or Website</h2>
@@ -205,7 +209,7 @@
                     </div>
                 </div>
             </div>
-            <a href=""  class="btn">See more</a>
+            <a href="" class="btn">See more</a>
         </div>
     </div>
 
@@ -213,30 +217,32 @@
     <div id="contact">
         <div class="container1">
             <div class="row">
-                <div class="contact-left">
+                <div class="contact-left" data-aos="fade-right">
                     <h1 class="sub-title">Contact Me</h1>
-                    <p><i class="fas fa-paper-plane"></i>vegaddarshan28@gmail.com</p>
-                    <p><i class="fas fa-phone-square-alt"></i>6354202263</p>
+                    <p data-aos="fade-left" data-aos-delay="300"><i
+                            class="fas fa-paper-plane"></i>vegaddarshan28@gmail.com</p>
+                    <p data-aos="fade-left" data-aos-delay="600"><i class="fas fa-phone-square-alt"></i>6354202263</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" data-aos="fade-down" data-aos-delay="900"><i class="fab fa-facebook"></i></a>
+                        <a href="#" data-aos="fade-down" data-aos-delay="1100"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#" data-aos="fade-down" data-aos-delay="1300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" data-aos="fade-down" data-aos-delay="1500"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <a href="my-cv.pdf" download class="btn btn2">Download CV</a>
                 </div>
-                <div class="contact-right">
+                <div class="contact-right" data-aos="fade-left">
                     <form id="myForm">
-                        <input  type="text" id="name" name="name" placeholder="Your Name" required>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
                         <input type="email" id="email" name="email" placeholder="Your Email" required>
                         <textarea id="message" name="message" placeholder="Your Message"></textarea>
-                        <button type="submit"  class="btn btn3" onclick='SubForm()'>submit</button>
+                        <button type="submit" class="btn btn3" onclick='SubForm()'>submit</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <p style="-webkit-text-fill-color: aliceblue;">copyright @ darshan Vegad. Made with <i class="fas fa-heart"></i> by Darshan</p>
+        <div class="copyright" >
+            <p data-aos="fade-up" data-aos-delay="500" style="-webkit-text-fill-color: aliceblue;">copyright @ darshan Vegad. Made with <i
+                    class="fas fa-heart"></i> by Darshan</p>
         </div>
     </div>
 
@@ -261,15 +267,18 @@
 
 
     </script>
-       <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous"></script>
-       <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
     <script>
         AOS.init({
-  duration: 1200,
-})
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out',
+            
+        })
     </script>
-    
-    
+
 </body>
 
 </html>
