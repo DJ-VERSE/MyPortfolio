@@ -624,7 +624,7 @@ form textarea {
 }
 
     .header-text {
-        height: auto;
+        height: fit-content;
      
         font-size: 16px;
     }
