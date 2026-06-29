@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Héritage — Old Money Clothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'IvyPresto';
+    src: local('IvyPresto Display Thin Italic'),
+         local('IvyPrestoDisplay-ThinItalic'),
+         local('IvyPresto');
+    font-weight: 100 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IvyPresto';
+    src: local('IvyPresto Display Thin'),
+         local('IvyPrestoDisplay-Thin'),
+         local('IvyPresto');
+    font-weight: 100 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTEesti';
+    src: local('GT Eesti Pro Display Light'),
+         local('GTEestiProDisplay-Light'),
+         local('GT Eesti Display Light'),
+         local('GTEesti');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTEesti';
+    src: local('GT Eesti Pro Display Regular'),
+         local('GTEestiProDisplay-Regular'),
+         local('GT Eesti Display Regular'),
+         local('GTEesti');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTEesti';
+    src: local('GT Eesti Pro Display Medium'),
+         local('GTEestiProDisplay-Medium'),
+         local('GT Eesti Display Medium'),
+         local('GTEesti');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: #F7F3EE;
+    color: #1C1A17;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --parchment: #F7F3EE;
+    --linen: #EDE7DC;
+    --warm-stone: #C8B89A;
+    --tobacco: #8B6E52;
+    --oak: #4A3728;
+    --charcoal: #1C1A17;
+    --ivory: #FAF8F5;
+    --gold: #B8975A;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    transition: background 0.4s ease, padding 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(247, 243, 238, 0.96);
+    backdrop-filter: blur(8px);
+    padding: 16px 48px;
+    border-bottom: 0.5px solid var(--warm-stone);
+  }
+  .nav-logo {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--ivory);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.4s;
+  }
+  nav.scrolled .nav-logo { color: var(--charcoal); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,248,245,0.85);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--oak); }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-icons {
+    display: flex; gap: 20px; align-items: center;
+  }
+  .nav-icon {
+    color: rgba(250,248,245,0.85);
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    text-decoration: none;
+  }
+  nav.scrolled .nav-icon { color: var(--oak); }
+  .nav-icon:hover { color: var(--gold); }
+
+  /* HERO PANELS */
+  .hero-section {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+
+  .hero-section.in-view .hero-bg {
+    transform: scale(1);
+  }
+
+  /* Panel backgrounds using rich gradient layers */
+  .panel-1 .hero-bg {
+    background-image:
+      linear-gradient(to bottom, rgba(28,26,23,0.05) 0%, rgba(28,26,23,0.55) 100%),
+      linear-gradient(135deg, #C4A882 0%, #967558 40%, #7A5C3A 100%);
+  }
+
+  .panel-2 .hero-bg {
+    background-image:
+      linear-gradient(to bottom, rgba(28,26,23,0.08) 0%, rgba(28,26,23,0.6) 100%),
+      linear-gradient(135deg, #8B7355 0%, #6B5240 50%, #4A3728 100%);
+  }
+
+  .panel-3 .hero-bg {
+    background-image:
+      linear-gradient(to bottom, rgba(28,26,23,0.05) 0%, rgba(28,26,23,0.5) 100%),
+      linear-gradient(135deg, #B8A080 0%, #A08860 40%, #7A6848 100%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 80px 80px;
+    max-width: 600px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-stone);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ivory);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: rgba(250,248,245,0.85);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ivory);
+    border: 0.5px solid rgba(250,248,245,0.5);
+    transition: all 0.3s ease;
+  }
+  .hero-cta:hover {
+    background: rgba(250,248,245,0.12);
+    border-color: rgba(250,248,245,0.9);
+  }
+
+  /* Panel indicator dots */
+  .panel-dots {
+    position: absolute;
+    right: 48px;
+    bottom: 50%;
+    transform: translateY(50%);
+    display: flex; flex-direction: column; gap: 10px;
+    z-index: 10;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(250,248,245,0.3);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.active {
+    background: var(--ivory);
+    transform: scale(1.3);
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    right: 48px;
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(250,248,245,0.5);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    z-index: 5;
+  }
+  .scroll-line {
+    width: 40px; height: 0.5px;
+    background: rgba(250,248,245,0.4);
+  }
+
+  /* SLIDER */
+  .slider-wrapper {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  /* EDITORIAL CONTENT SECTION */
+  .editorial {
+    background: var(--parchment);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .editorial-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--tobacco);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .editorial-heading {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .editorial-heading em { font-style: italic; }
+  .editorial-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--tobacco);
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+  .editorial-link {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--charcoal);
+    padding-bottom: 4px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .editorial-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  .editorial-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .editorial-image-inner {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #D4B896 0%, #A88A6A 40%, #7A5C42 100%);
+    position: relative;
+  }
+  .editorial-image-inner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(74,55,40,0.08) 0px, rgba(74,55,40,0.08) 1px,
+      transparent 1px, transparent 10px
+    );
+  }
+
+  /* IMAGE PLACEHOLDER LABEL */
+  .image-placeholder-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250,248,245,0.5);
+    z-index: 2;
+  }
+
+  /* PRODUCT GRID */
+  .collection {
+    background: var(--ivory);
+    padding: 80px 80px 100px;
+  }
+
+  .section-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 48px;
+    border-bottom: 0.5px solid var(--warm-stone);
+    padding-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.02em;
+  }
+  .section-all {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tobacco);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .section-all:hover { color: var(--gold); }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .product-card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    background: var(--linen);
+  }
+
+  .product-image {
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+
+  .product-image-bg {
+    background-size: cover;
+    background-position: center;
+    width: 100%; height: 100%;
+    transform: scale(1);
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+  .product-card:hover .product-image-bg { transform: scale(1.04); }
+
+  .p1 { background: linear-gradient(160deg, #C4A882 0%, #967558 100%); }
+  .p2 { background: linear-gradient(160deg, #8E9B8A 0%, #6A7560 100%); }
+  .p3 { background: linear-gradient(160deg, #B5A898 0%, #8A7D6E 100%); }
+  .p4 { background: linear-gradient(160deg, #9C8E70 0%, #7A6A52 100%); }
+  .p5 { background: linear-gradient(160deg, #C8BDB0 0%, #A09080 100%); }
+  .p6 { background: linear-gradient(160deg, #7A8878 0%, #5C6858 100%); }
+
+  .product-image-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(0,0,0,0.025) 30px, rgba(0,0,0,0.025) 31px),
+      repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(0,0,0,0.025) 30px, rgba(0,0,0,0.025) 31px);
+  }
+
+  .product-label {
+    position: absolute; top: 16px; left: 16px;
+    font-family: 'GTEesti', 'Jost', sans-serif;
+    font-size: 8.5px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(250,248,245,0.75);
+    z-index: 2;
+  }
+
+  .product-info {
+    padding: 16px 20px 20px;
+    background: var(--ivory);
+  }
+  .product-name {
+    font-family: 'GTEesti', 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+  .product-detail {
+    font-family: 'GTEesti', 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--tobacco);
+    letter-spacing: 0.06em;
+  }
+  .product-price {
+    font-family: 'GTEesti', 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--oak);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  /* PHILOSOPHY STRIP */
+  .philosophy {
+    background: var(--charcoal);
+    padding: 80px;
+    text-align: center;
+  }
+  .philosophy-quote {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 50px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ivory);
+    line-height: 1.3;
+    max-width: 800px;
+    margin: 0 auto 28px;
+    letter-spacing: 0.02em;
+  }
+  .philosophy-attr {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-stone);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--parchment);
+    border-top: 0.5px solid var(--warm-stone);
+    padding: 60px 80px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand {
+    font-family: 'IvyPresto', 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--tobacco);
+    max-width: 220px;
+  }
+  .footer-col-title {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--tobacco);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 0.5px solid var(--warm-stone);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .footer-copy {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--tobacco);
+    letter-spacing: 0.05em;
+  }
+  .footer-socials { display: flex; gap: 20px; }
+  .footer-socials a {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tobacco);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-socials a:hover { color: var(--gold); }
+
+  /* SCROLL ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-delay-1 { transition-delay: 0.15s; }
+  .fade-in-delay-2 { transition-delay: 0.3s; }
+
+  /* Announcement bar */
+  .announcement {
+    background: var(--oak);
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm-stone);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 32px 60px; }
+    .editorial {
+      grid-template-columns: 1fr;
+      padding: 60px 32px;
+      gap: 40px;
+    }
+    .editorial-image { max-height: 400px; }
+    .collection { padding: 60px 16px 80px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: 1fr 1fr; padding: 48px 24px 32px; }
+    .philosophy { padding: 60px 32px; }
+    .panel-dots { right: 20px; }
+    .scroll-hint { display: none; }
+  }
+
+  @media (max-width: 560px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: 1fr; }
+    .hero-title { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Soulmere</a>
+  <ul class="nav-links">
+    <li><a href="#">Men</a></li>
+    <li><a href="#">Women</a></li>
+    <li><a href="#">Collections</a></li>
+    <li><a href="#">The House</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="#" class="nav-icon">Search</a>
+    <a href="#" class="nav-icon">Bag (0)</a>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<div class="slider-wrapper">
+  <div class="slides" id="slides">
+
+    <!-- Slide 1 -->
+    <div class="slide hero-section panel-1">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <span class="hero-eyebrow fade-in" style="transition-delay:0.4s">The Summer Estate Edit — 2025</span>
+        <h1 class="hero-title fade-in fade-in-delay-1">
+          Dressed in<br><em>earned quiet.</em>
+        </h1>
+        <a href="#collection" class="hero-cta fade-in fade-in-delay-2">Explore the Collection</a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Discover</span>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide hero-section panel-2">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <span class="hero-eyebrow">Tailoring — Made to Endure</span>
+        <h1 class="hero-title">
+          The cloth that<br><em>outlasts fashion.</em>
+        </h1>
+        <a href="#" class="hero-cta">View Tailoring</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide hero-section panel-3">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <span class="hero-eyebrow">Cashmere & Wool — New Arrivals</span>
+        <h1 class="hero-title">
+          Where warmth<br><em>becomes legacy.</em>
+        </h1>
+        <a href="#" class="hero-cta">Shop Knitwear</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots navigation -->
+  <div class="panel-dots" id="dots">
+    <div class="dot active" data-idx="0"></div>
+    <div class="dot" data-idx="1"></div>
+    <div class="dot" data-idx="2"></div>
+  </div>
+</div>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="editorial-text fade-in">
+    <span class="editorial-label">The House</span>
+    <h2 class="editorial-heading">
+      Quiet luxury.<br><em>Enduring taste.</em>
+    </h2>
+    <p class="editorial-body">
+      Héritage was founded on a single conviction — that true elegance is never worn loudly. Our garments are made for those who have stopped chasing trends, who choose fabric over logo, cut over flash, and craftsmanship over convenience.
+    </p>
+    <a href="#" class="editorial-link">Our Philosophy</a>
+  </div>
+  <div class="editorial-image fade-in fade-in-delay-1">
+    <div class="editorial-image-inner">
+      <div class="image-placeholder-label">Replace with editorial photograph</div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION GRID -->
+<section class="collection" id="collection">
+  <div class="section-header">
+    <h2 class="section-title">The Current Edit</h2>
+    <a href="#" class="section-all">All Pieces</a>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+          <span class="product-label">New</span>
+          <img src="https://i.pinimg.com/736x/cd/c5/0a/cdc50a273a322aa24cf7d1e97a7148b6.jpg" alt="The Dorset Linen Shirt" />
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Dorset Linen Shirt</div>
+        <div class="product-detail">Stone Washed, Slim</div>
+        <div class="product-price">₹4,200</div>
+      </div>
+    </div>
+    <div class="product-card fade-in fade-in-delay-1">
+      <div class="product-image">
+          <span class="product-label">New</span>
+          <img src="https://style-old-money.com/cdn/shop/files/Sa9998878233b49a98179fc332c10354aY.webp?crop=center&height=1299&v=1728718232&width=1000" alt="The Dorset Linen Shirt" />
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Dorset Linen Shirt</div>
+        <div class="product-detail">Stone Washed, Slim</div>
+        <div class="product-price">₹4,200</div>
+      </div>
+    </div>
+
+    
+
+    <div class="product-card fade-in fade-in-delay-2">
+      <div class="product-image">
+        <div class="product-image-bg p3"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Harrow Knit</div>
+        <div class="product-detail">Merino Wool, Oatmeal</div>
+        <div class="product-price">₹6,400</div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <div class="product-image-bg p4"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Eton Blazer</div>
+        <div class="product-detail">Heritage Herringbone</div>
+        <div class="product-price">₹12,500</div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in fade-in-delay-1">
+      <div class="product-image">
+        <div class="product-image-bg p5">
+          <span class="product-label">Last Few</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Aldwych Vest</div>
+        <div class="product-detail">Cashmere Blend, Taupe</div>
+        <div class="product-price">₹7,900</div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in fade-in-delay-2">
+      <div class="product-image">
+        <div class="product-image-bg p6"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Fielding Coat</div>
+        <div class="product-detail">Wool Melton, Forest</div>
+        <div class="product-price">₹18,000</div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <div class="product-image-bg p3">
+          <span class="product-label">New</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Ashby Cap</div>
+        <div class="product-detail">Wool Tweed, Slate</div>
+        <div class="product-price">₹2,800</div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in fade-in-delay-1">
+      <div class="product-image">
+        <div class="product-image-bg p1"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Kensington Scarf</div>
+        <div class="product-detail">Pure Cashmere, Sand</div>
+        <div class="product-price">₹5,200</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHILOSOPHY STRIP -->
+<section class="philosophy">
+  <p class="philosophy-quote fade-in">
+    "True elegance is refusal — the art of knowing what to leave out."
+  </p>
+  <span class="philosophy-attr fade-in fade-in-delay-1">The Héritage Manifesto</span>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Héritage</div>
+    <p class="footer-tagline">Old money sensibility for those who wear clothes, not trends. Crafted with intention. Worn with restraint.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Shop</div>
+    <ul class="footer-links">
+      <li><a href="#">Men's Collection</a></li>
+      <li><a href="#">Women's Collection</a></li>
+      <li><a href="#">Knitwear</a></li>
+      <li><a href="#">Outerwear</a></li>
+      <li><a href="#">New Arrivals</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">The House</div>
+    <ul class="footer-links">
+      <li><a href="#">Our Philosophy</a></li>
+      <li><a href="#">Craftsmanship</a></li>
+      <li><a href="#">Care & Repair</a></li>
+      <li><a href="#">Bespoke</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Assistance</div>
+    <ul class="footer-links">
+      <li><a href="#">Sizing Guide</a></li>
+      <li><a href="#">Shipping & Returns</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Héritage. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAV scroll behaviour
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hero slider
+  let current = 0;
+  const slidesEl = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = 3;
+
+  function goTo(idx) {
+    current = (idx + totalSlides) % totalSlides;
+    slidesEl.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    updateKenBurns();
+  }
+
+  dots.forEach(d => {
+    d.addEventListener('click', () => goTo(parseInt(d.dataset.idx)));
+  });
+
+  // Auto-advance every 5.5s
+  let autoplay = setInterval(() => goTo(current + 1), 5500);
+
+  // Pause autoplay on hover
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoplay));
+  sliderWrapper.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => goTo(current + 1), 5500);
+  });
+
+  // Ken Burns effect on active slide's hero-bg
+  const heroBgs = document.querySelectorAll('.hero-bg');
+  function updateKenBurns() {
+    heroBgs.forEach((bg, i) => {
+      if (i === current) {
+        bg.style.transition = 'transform 7s ease';
+        bg.style.transform = 'scale(1.0)';
+      } else {
+        bg.style.transition = 'none';
+        bg.style.transform = 'scale(1.06)';
+      }
+    });
+  }
+  updateKenBurns();
+
+  // Scroll-reveal (IntersectionObserver)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
