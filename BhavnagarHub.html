@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BhavnagarHub — Bhavnagar's Land &amp; Plot Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Fresh Green & White Palette */
+    --ink: #022C22; /* Deep forest green / almost black */
+    --ink-soft: #374151; /* Muted slate for readable subtext */
+    --paper: #FFFFFF; /* Crisp white */
+    --paper-2: #F0FDF4; /* Very light fresh mint for soft backgrounds */
+    --paper-line: #BBF7D0; /* Light green for borders */
+    --accent: #10B981; /* Vibrant emerald green for primary actions */
+    --accent-dark: #059669; /* Darker emerald for hovers */
+    
+    /* Plot statuses */
+    --plot-available: #059669;
+    --plot-available-bg: #D1FAE5;
+    --plot-booked: #D97706;
+    --plot-booked-bg: #FEF3C7;
+    --plot-sold: #DC2626;
+    --plot-sold-bg: #FEE2E2;
+    
+    --cream-white: #FFFFFF;
+    --shadow: 0 10px 30px rgba(2, 44, 34, 0.08);
+    --radius: 4px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-dark);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--accent-dark);
+    display:inline-block;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255, 255, 255, 0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+  }
+  .brand-mark{
+    width:34px; height:34px;
+    flex-shrink:0;
+  }
+  .brand-text{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .brand-text span{ color:var(--accent); }
+  .brand-sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+  }
+  .nav-links a{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    font-size:14px;
+    font-weight:600;
+    border:1px solid transparent;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    white-space:nowrap;
+  }
+  .btn-accent{
+    background:var(--accent);
+    color:var(--cream-white);
+  }
+  .btn-accent:hover{ background:var(--accent-dark); transform:translateY(-1px); box-shadow:var(--shadow); }
+  .btn-ink{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-ink:hover{ background:#021c16; transform:translateY(-1px); }
+  .btn-line{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-line:hover{ background:var(--ink); color:var(--paper); }
+  .btn-ghost-paper{
+    background:transparent;
+    color:var(--paper);
+    border:1px solid rgba(255,255,255,0.5);
+  }
+  .btn-ghost-paper:hover{ background:rgba(255,255,255,0.15); }
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none; border:none;
+  }
+  .menu-toggle span{
+    width:24px; height:2px; background:var(--ink);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:76px 0 40px;
+  }
+  .hero-top{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:end;
+    margin-bottom:44px;
+  }
+  .hero h1{
+    font-size:clamp(36px, 4.6vw, 60px);
+    margin-top:18px;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--accent-dark);
+  }
+  .hero-lede{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-top:20px;
+  }
+  .hero-side{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    border-left:2px solid var(--accent);
+    padding-left:18px;
+    line-height:1.7;
+  }
+
+  /* search bar */
+  .search-bar{
+    background:var(--cream-white);
+    border:1px solid var(--paper-line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:20px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1fr auto;
+    gap:14px;
+    margin-bottom:56px;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .field label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+  }
+  .field select, .field input{
+    border:1px solid var(--paper-line);
+    background:var(--paper);
+    padding:11px 12px;
+    font-family:'Work Sans', sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+    border-radius:2px;
+  }
+  .field select:focus, .field input:focus{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+  }
+  .search-bar .btn{ align-self:end; height:44px; }
+
+  /* ===== MAP / SIGNATURE ELEMENT ===== */
+  .survey{
+    background:var(--ink);
+    border-radius:6px;
+    padding:40px;
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .survey::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size:28px 28px;
+    pointer-events:none;
+  }
+  .survey-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:26px;
+    position:relative;
+    flex-wrap:wrap;
+  }
+  .survey-title{
+    font-family:'Fraunces', serif;
+    font-size:24px;
+    font-weight:600;
+    color:var(--paper);
+  }
+  .survey-loc{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#A7F3D0;
+    margin-top:6px;
+  }
+  .legend{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:#D1FAE5;
+  }
+  .legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .legend i{
+    width:10px; height:10px; border-radius:2px; display:inline-block;
+  }
+
+  .plot-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(10, 1fr);
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .plot{
+    aspect-ratio:1/0.85;
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform 0.12s ease, filter 0.12s ease;
+    border:1px solid rgba(0,0,0,0.12);
+  }
+  .plot:hover{ transform:translateY(-2px) scale(1.05); filter:brightness(1.1); z-index:2; }
+  .plot.available{ background:var(--plot-available-bg); color:#064E3B; }
+  .plot.booked{ background:var(--plot-booked-bg); color:#92400E; }
+  .plot.sold{ background:var(--plot-sold-bg); color:#991B1B; }
+
+  .plot-info{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,0.15);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:#D1FAE5;
+  }
+  #plot-detail{
+    font-size:13px;
+    color:var(--paper);
+  }
+  #plot-detail b{ color:var(--accent); }
+
+  /* ===== STATS ===== */
+  .stats{
+    background:var(--paper-2);
+    border-top:1px solid var(--paper-line);
+    border-bottom:1px solid var(--paper-line);
+    padding:44px 0;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+    text-align:center;
+  }
+  .stat-num{
+    font-family:'Fraunces', serif;
+    font-size:38px;
+    font-weight:600;
+    color:var(--accent-dark);
+  }
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section.block{ padding:88px 0; }
+  .block-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:46px;
+    flex-wrap:wrap;
+  }
+  .block-head h2{
+    font-size:clamp(28px,3.2vw,40px);
+    margin-top:14px;
+  }
+  .block-head p{
+    max-width:44ch;
+    color:var(--ink-soft);
+    font-size:15px;
+  }
+
+  
+  /* ===== LAYOUT CARDS ===== */
+  .layouts-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .layout-card{
+    background:var(--cream-white);
+    border:1px solid var(--paper-line);
+    border-radius:4px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .layout-card:hover{ box-shadow:var(--shadow); transform:translateY(-3px); }
+  .layout-thumb{
+    height:120px;
+    background:
+      linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.05)),
+      repeating-linear-gradient(0deg, transparent, transparent 13px, rgba(16,185,129,0.06) 13px, rgba(16,185,129,0.06) 14px),
+      repeating-linear-gradient(90deg, transparent, transparent 13px, rgba(16,185,129,0.06) 13px, rgba(16,185,129,0.06) 14px);
+    position:relative;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .layout-tag{
+    position:absolute;
+    top:10px; left:10px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.05em;
+    padding:4px 8px;
+    border-radius:2px;
+    text-transform:uppercase;
+  }
+  .layout-body{
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+  .layout-body h3{
+    font-size:18px;
+    font-weight:600;
+  }
+  .layout-loc{
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .layout-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    border-top:1px dashed var(--paper-line);
+    padding-top:10px;
+    margin-top:auto;
+  }
+  .layout-price{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--accent-dark);
+  }
+
+  /* ===== PROCESS (buy/sell toggle) ===== */
+  .toggle-row{
+    display:inline-flex;
+    background:var(--paper-2);
+    border:1px solid var(--paper-line);
+    border-radius:30px;
+    padding:4px;
+    margin-bottom:40px;
+  }
+  .toggle-btn{
+    padding:10px 24px;
+    border-radius:24px;
+    font-size:14px;
+    font-weight:600;
+    background:transparent;
+    border:none;
+    color:var(--ink-soft);
+  }
+  .toggle-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .process-panel{ display:none; }
+  .process-panel.active{ display:grid; }
+  .process-panel{
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .process-step{
+    border-left:1px solid var(--paper-line);
+    padding-left:18px;
+    position:relative;
+  }
+  .process-step .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--accent-dark);
+    margin-bottom:10px;
+    display:block;
+  }
+  .process-step h4{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .process-step p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ===== TRUST GRID ===== */
+  .trust-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--paper-line);
+    border:1px solid var(--paper-line);
+  }
+  .trust-card{
+    background:var(--cream-white);
+    padding:28px 24px;
+  }
+  .trust-card .glyph{
+    width:38px; height:38px;
+    margin-bottom:16px;
+  }
+  .trust-card h4{
+    font-size:15.5px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .trust-card p{
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .testi-card{
+    background:var(--paper-2);
+    border:1px solid var(--paper-line);
+    padding:26px;
+    border-radius:4px;
+  }
+  .testi-quote{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    font-style:italic;
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  .testi-name{
+    font-weight:600;
+    font-size:13.5px;
+  }
+  .testi-loc{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:6px;
+    padding:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";
+    position:absolute;
+    right:-60px; top:-60px;
+    width:220px; height:220px;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:50%;
+  }
+  .cta-banner h2{
+    color:var(--paper);
+    font-size:clamp(24px,2.6vw,32px);
+    max-width:16ch;
+  }
+  .cta-banner p{ color:#A7F3D0; margin-top:10px; font-size:14px; max-width:40ch; }
+  .cta-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--paper-2);
+    border-top:1px solid var(--paper-line);
+    padding:64px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+    gap:40px;
+    margin-bottom:50px;
+  }
+  .footer-brand p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-top:14px;
+    max-width:32ch;
+  }
+  .footer-col h5{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-dark);
+    margin-bottom:16px;
+  }
+  .footer-col ul li{ margin-bottom:10px; }
+  .footer-col ul li a{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .footer-col ul li a:hover{ color:var(--ink); }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    padding-top:26px;
+    border-top:1px solid var(--paper-line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px){
+    .nav-links{ display:none; }
+    .menu-toggle{ display:flex; }
+    .hero-top{ grid-template-columns:1fr; gap:34px; }
+    .search-bar{ grid-template-columns:1fr 1fr; }
+    .search-bar .btn{ grid-column:1/-1; }
+    .stats-grid{ grid-template-columns:repeat(2,1fr); gap:30px; }
+    .layouts-grid{ grid-template-columns:repeat(2,1fr); }
+    .trust-grid{ grid-template-columns:repeat(2,1fr); }
+    .testi-grid{ grid-template-columns:1fr; }
+    .process-panel{ grid-template-columns:repeat(2,1fr); }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .plot-grid{ grid-template-columns:repeat(6,1fr); }
+  }
+  @media (max-width: 600px){
+    .wrap{ padding:0 20px; }
+    .nav{ padding:16px 20px; }
+    .search-bar{ grid-template-columns:1fr; }
+    .stats-grid{ grid-template-columns:1fr 1fr; }
+    .layouts-grid{ grid-template-columns:1fr; }
+    .trust-grid{ grid-template-columns:1fr; }
+    .process-panel{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:30px; }
+    .cta-banner{ padding:36px 24px; flex-direction:column; align-items:flex-start; }
+    .plot-grid{ grid-template-columns:repeat(5,1fr); }
+    .survey{ padding:24px; }
+    section.block{ padding:60px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="2" width="36" height="36" rx="3" stroke="#10B981" stroke-width="1.4"/>
+        <line x1="2" y1="14" x2="38" y2="14" stroke="#10B981" stroke-width="1"/>
+        <line x1="2" y1="26" x2="38" y2="26" stroke="#10B981" stroke-width="1"/>
+        <line x1="14" y1="2" x2="14" y2="38" stroke="#10B981" stroke-width="1"/>
+        <line x1="26" y1="2" x2="26" y2="38" stroke="#10B981" stroke-width="1"/>
+        <rect x="14" y="14" width="12" height="12" fill="#059669"/>
+      </svg>
+      <span>
+        <span class="brand-text">Bhavnagar<span>Hub</span></span>
+        <div class="brand-sub">Land &amp; Plot Marketplace</div>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#layouts">Buy a Plot</a>
+      <a href="#sell">Sell Your Land</a>
+      <a href="#layouts">Layouts</a>
+      <a href="#trust">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+919999999999" class="btn btn-line" style="display:none" id="phone-btn">+91 98765 43210</a>
+      <a href="#sell" class="btn btn-accent">List Your Land</a>
+    </div>
+    <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Bhavnagar, Gujarat</div>
+        <h1>Every residential plot in the city — <em>mapped, verified, and ready to book.</em></h1>
+        <p class="hero-lede">BhavnagarHub lists survey-verified residential land across Bhavnagar's growing localities. Search by locality and budget, walk the plot before you commit, and let us handle the registration paperwork.</p>
+      </div>
+      <div class="hero-side">
+        01 / Verified 7-12 &amp; title records<br>
+        02 / Site visits arranged within 48 hrs<br>
+        03 / Zero brokerage for buyers<br>
+        04 / Registration &amp; stamp duty support
+      </div>
+    </div>
+
+    <form class="search-bar" onsubmit="return false;">
+      <div class="field">
+        <label for="locality">Locality</label>
+        <select id="locality">
+          <option>Any locality in Bhavnagar</option>
+          <option>Waghawadi Road</option>
+          <option>Ghogha Circle</option>
+          <option>Vartej</option>
+          <option>Sidsar Road</option>
+          <option>Kaliyabid</option>
+          <option>Umrala Road</option>
+          <option>Chitra</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="size">Plot size (sq. vaar)</label>
+        <select id="size">
+          <option>Any size</option>
+          <option>30 – 50 vaar</option>
+          <option>50 – 100 vaar</option>
+          <option>100 – 150 vaar</option>
+          <option>150+ vaar</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="budget">Budget</label>
+        <select id="budget">
+          <option>Any budget</option>
+          <option>Under ₹10 lakh</option>
+          <option>₹10 – 25 lakh</option>
+          <option>₹25 – 50 lakh</option>
+          <option>₹50 lakh+</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-accent" onclick="document.getElementById('layouts').scrollIntoView({behavior:'smooth'})">Find Plots</button>
+    </form>
+
+    <!-- SIGNATURE: interactive survey / plot booking grid -->
+    <div class="survey">
+      <div class="survey-head">
+        <div>
+          <div class="survey-title">Shantivan Residency</div>
+          <div class="survey-loc">SURVEY NO. 184/2 · WAGHAWADI ROAD, BHAVNAGAR · 60 PLOTS</div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--plot-available-bg)"></i>Available</span>
+          <span><i style="background:var(--plot-booked-bg)"></i>Booked</span>
+          <span><i style="background:var(--plot-sold-bg)"></i>Sold</span>
+        </div>
+      </div>
+
+      <div class="plot-grid" id="plot-grid"></div>
+
+      <div class="plot-info">
+        <div id="plot-detail">Hover or tap a plot to see its number, size and price.</div>
+        <div>Tap a plot for details →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div>
+        <div class="stat-num">1,200+</div>
+        <div class="stat-label">PLOTS LISTED CITY-WIDE</div>
+      </div>
+      <div>
+        <div class="stat-num">45</div>
+        <div class="stat-label">VERIFIED LAYOUTS</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">TITLE-CHECKED BEFORE LISTING</div>
+      </div>
+      <div>
+        <div class="stat-num">9 yrs</div>
+        <div class="stat-label">SERVING BHAVNAGAR FAMILIES</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED LAYOUTS ============ -->
+  <section class="block wrap" id="layouts">
+    <div class="block-head">
+      <div>
+        <div class="eyebrow">Featured layouts</div>
+        <h2>Plots across Bhavnagar's growing localities</h2>
+      </div>
+      <p>From the Waghawadi Road corridor to the highway-facing plots near Vartej — each layout below has been walked, measured and title-checked by our team.</p>
+    </div>
+
+    <div class="layouts-grid">
+      <div class="layout-card">
+        <div class="layout-thumb"><span class="layout-tag">12 plots left</span></div>
+        <div class="layout-body">
+          <h3>Shantivan Residency</h3>
+          <div class="layout-loc">Waghawadi Road</div>
+          <div class="layout-price">₹8,500/vaar onwards</div>
+          <div class="layout-meta"><span>40–100 vaar</span><span>RERA · PR/GJ/BVN/0142</span></div>
+        </div>
+      </div>
+      <div class="layout-card">
+        <div class="layout-thumb"><span class="layout-tag">New launch</span></div>
+        <div class="layout-body">
+          <h3>Ghogha Green Park</h3>
+          <div class="layout-loc">Ghogha Circle</div>
+          <div class="layout-price">₹6,200/vaar onwards</div>
+          <div class="layout-meta"><span>50–150 vaar</span><span>RERA · PR/GJ/BVN/0187</span></div>
+        </div>
+      </div>
+      <div class="layout-card">
+        <div class="layout-thumb"><span class="layout-tag">Highway facing</span></div>
+        <div class="layout-body">
+          <h3>Vartej Vista</h3>
+          <div class="layout-loc">Rajkot Highway, Vartej</div>
+          <div class="layout-price">₹5,400/vaar onwards</div>
+          <div class="layout-meta"><span>60–200 vaar</span><span>RERA · PR/GJ/BVN/0203</span></div>
+        </div>
+      </div>
+      <div class="layout-card">
+        <div class="layout-thumb"><span class="layout-tag">Nearly sold out</span></div>
+        <div class="layout-body">
+          <h3>Sidsar Sarovar Layout</h3>
+          <div class="layout-loc">Sidsar Road</div>
+          <div class="layout-price">₹9,800/vaar onwards</div>
+          <div class="layout-meta"><span>45–90 vaar</span><span>RERA · PR/GJ/BVN/0119</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS: BUY / SELL ============ -->
+  <section class="block wrap" id="sell" style="background:var(--paper-2); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line); border-radius:6px;">
+    <div class="block-head">
+      <div>
+        <div class="eyebrow">How it works</div>
+        <h2>Whether you're buying or selling, it starts with a conversation</h2>
+      </div>
+    </div>
+
+    <div class="toggle-row">
+      <button class="toggle-btn active" id="tab-buy" onclick="showTab('buy')">I want to buy</button>
+      <button class="toggle-btn" id="tab-sell" onclick="showTab('sell')">I want to sell</button>
+    </div>
+
+    <div class="process-panel active" id="panel-buy">
+      <div class="process-step">
+        <span class="num">STEP 01</span>
+        <h4>Tell us your locality &amp; budget</h4>
+        <p>Share where in Bhavnagar you'd like to buy, and your budget per vaar.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 02</span>
+        <h4>We shortlist verified plots</h4>
+        <p>Only title-checked, survey-verified plots make it to your shortlist.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 03</span>
+        <h4>Free site visit</h4>
+        <p>Walk the actual plot with our team, any day of the week.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 04</span>
+        <h4>Registration support</h4>
+        <p>We coordinate the sale deed, stamp duty and sub-registrar visit.</p>
+      </div>
+    </div>
+
+    <div class="process-panel" id="panel-sell">
+      <div class="process-step">
+        <span class="num">STEP 01</span>
+        <h4>Share your land details</h4>
+        <p>Survey number, location and size — takes under five minutes.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 02</span>
+        <h4>We verify title &amp; survey number</h4>
+        <p>Our team checks the 7/12 extract and ownership records at no cost to you.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 03</span>
+        <h4>Listed to serious buyers only</h4>
+        <p>Your land is shown to buyers actively searching that locality and budget.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">STEP 04</span>
+        <h4>We handle site visits &amp; paperwork</h4>
+        <p>From buyer walk-throughs to the final registration — we're present at every step.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="block wrap" id="trust">
+    <div class="block-head">
+      <div>
+        <div class="eyebrow">Why BhavnagarHub</div>
+        <h2>Land deals in Bhavnagar, done the careful way</h2>
+      </div>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <svg class="glyph" viewBox="0 0 40 40" fill="none"><rect x="6" y="4" width="28" height="32" rx="2" stroke="#059669" stroke-width="1.5"/><path d="M13 14h14M13 20h14M13 26h9" stroke="#059669" stroke-width="1.5"/><path d="M13 33l4-4 3 3 6-7" stroke="#10B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Title &amp; 7/12 verified</h4>
+        <p>Every plot's ownership record and survey extract is checked before it's listed.</p>
+      </div>
+      <div class="trust-card">
+        <svg class="glyph" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="16" r="6" stroke="#10B981" stroke-width="1.5"/><path d="M20 24c-7 0-12 4-12 9v3h24v-3c0-5-5-9-12-9z" stroke="#10B981" stroke-width="1.5"/></svg>
+        <h4>Free site visit, any day</h4>
+        <p>Our local team walks the plot boundary with you before you sign anything.</p>
+      </div>
+      <div class="trust-card">
+        <svg class="glyph" viewBox="0 0 40 40" fill="none"><rect x="5" y="9" width="30" height="22" rx="2" stroke="#059669" stroke-width="1.5"/><path d="M5 15h30" stroke="#059669" stroke-width="1.5"/><circle cx="14" cy="23" r="2" fill="#10B981"/></svg>
+        <h4>Registration support</h4>
+        <p>We coordinate sale deed drafting, stamp duty and the sub-registrar visit.</p>
+      </div>
+      <div class="trust-card">
+        <svg class="glyph" viewBox="0 0 40 40" fill="none"><path d="M20 5l4 8 9 1-6.5 6.5L28 30l-8-4.5L12 30l1.5-9.5L7 14l9-1z" stroke="#10B981" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <h4>No hidden brokerage</h4>
+        <p>Buyers pay zero brokerage — our fee comes from the seller side only.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="block wrap">
+    <div class="block-head">
+      <div>
+        <div class="eyebrow">From Bhavnagar residents</div>
+        <h2>People who've bought and sold through us</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"We saw the plot boundary marked in person before paying a single rupee. That mattered more than any brochure."</div>
+        <div class="testi-name">Rajesh Barot</div>
+        <div class="testi-loc">Bought in Vartej</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"My father's land near Ghogha sold in six weeks, and the team handled the registration end to end."</div>
+        <div class="testi-name">Foram Shah</div>
+        <div class="testi-loc">Sold near Ghogha Circle</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"No broker calls at odd hours, no pressure. Just a verified list of plots that matched our budget."</div>
+        <div class="testi-name">Mahesh Solanki</div>
+        <div class="testi-loc">Bought on Sidsar Road</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="wrap" style="padding-bottom:100px;">
+    <div class="cta-banner">
+      <div>
+        <h2>Have land to sell in Bhavnagar?</h2>
+        <p>List it with us — we verify the title, arrange the site visits, and only bring you serious buyers.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-accent">List Your Land — It's Free</a>
+        <a href="tel:+919999999999" class="btn btn-ghost-paper">Call +91 63528 66643</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-text">Bhavnagar<span style="color:var(--accent-dark)">Hub</span></div>
+        <p>Bhavnagar's local marketplace for verified residential plots — built by people who walk every plot before it's listed.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#layouts">Buy a plot</a></li>
+          <li><a href="#sell">Sell your land</a></li>
+          <li><a href="#layouts">Featured layouts</a></li>
+          <li><a href="#trust">Why BhavnagarHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Localities</h5>
+        <ul>
+          <li><a href="#">Waghawadi Road</a></li>
+          <li><a href="#">Ghogha Circle</a></li>
+          <li><a href="#">Vartej</a></li>
+          <li><a href="#">Sidsar Road</a></li>
+          <li><a href="#">Kaliyabid</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Waghawadi Road, Bhavnagar, Gujarat 364001</li>
+          <li><a href="tel:+9163528 66643">+91 63528 66643</a></li>
+          <li><a href="mailto:bhavnagarhub639@gmail.com">bhavnagarhub639@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BHAVNAGARHUB · ALL PLOT DETAILS SUBJECT TO SITE VERIFICATION</span>
+      <span>RERA REGISTRATION NUMBERS AVAILABLE ON REQUEST FOR EACH LAYOUT</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Build the interactive plot grid
+  const grid = document.getElementById('plot-grid');
+  const detail = document.getElementById('plot-detail');
+  const totalPlots = 60;
+  const sizes = [45, 50, 60, 75, 90, 100];
+  const statuses = ['available','available','available','booked','sold','available','available','booked','available','sold'];
+
+  for(let i=1; i<=totalPlots; i++){
+    const status = statuses[i % statuses.length];
+    const size = sizes[i % sizes.length];
+    const pricePerVaar = 8500 + (i % 5) * 400;
+    const total = size * pricePerVaar;
+
+    const el = document.createElement('div');
+    el.className = 'plot ' + status;
+    el.textContent = 'P' + String(i).padStart(2,'0');
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','button');
+    el.setAttribute('aria-label', 'Plot ' + i + ', ' + status + ', ' + size + ' square vaar');
+
+    const showDetail = () => {
+      const statusLabel = status === 'available' ? 'Available' : status === 'booked' ? 'Booked' : 'Sold';
+      detail.innerHTML = '<b>Plot P' + String(i).padStart(2,'0') + '</b> · ' + size + ' sq.vaar · ₹' + pricePerVaar.toLocaleString('en-IN') + '/vaar · Total ≈ ₹' + total.toLocaleString('en-IN') + ' · ' + statusLabel;
+    };
+
+    el.addEventListener('mouseenter', showDetail);
+    el.addEventListener('focus', showDetail);
+    el.addEventListener('click', showDetail);
+
+    grid.appendChild(el);
+  }
+
+  // Buy / Sell tab toggle
+  function showTab(which){
+    document.getElementById('tab-buy').classList.toggle('active', which==='buy');
+    document.getElementById('tab-sell').classList.toggle('active', which==='sell');
+    document.getElementById('panel-buy').classList.toggle('active', which==='buy');
+    document.getElementById('panel-sell').classList.toggle('active', which==='sell');
+  }
+</script>
+
+</body>
+</html>
