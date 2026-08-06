@@ -10,22 +10,21 @@
 <style>
   :root{
     /* Fresh Green & White Palette */
-    --ink: #022C22; /* Deep forest green / almost black */
-    --ink-soft: #374151; /* Muted slate for readable subtext */
-    --paper: #FFFFFF; /* Crisp white */
-    --paper-2: #F0FDF4; /* Very light fresh mint for soft backgrounds */
-    --paper-line: #BBF7D0; /* Light green for borders */
-    --accent: #10B981; /* Vibrant emerald green for primary actions */
-    --accent-dark: #059669; /* Darker emerald for hovers */
-    
-    /* Plot statuses */
+    --ink: #022C22;
+    --ink-soft: #374151;
+    --paper: #FFFFFF;
+    --paper-2: #F0FDF4;
+    --paper-line: #BBF7D0;
+    --accent: #10B981;
+    --accent-dark: #059669;
+
     --plot-available: #059669;
     --plot-available-bg: #D1FAE5;
     --plot-booked: #D97706;
     --plot-booked-bg: #FEF3C7;
     --plot-sold: #DC2626;
     --plot-sold-bg: #FEE2E2;
-    
+
     --cream-white: #FFFFFF;
     --shadow: 0 10px 30px rgba(2, 44, 34, 0.08);
     --radius: 4px;
@@ -46,11 +45,7 @@
   ul{list-style:none;}
   button{font-family:inherit; cursor:pointer;}
 
-  .wrap{
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 32px;
-  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
 
   h1,h2,h3,h4{
     font-family:'Fraunces', serif;
@@ -69,270 +64,125 @@
     align-items:center;
     gap:10px;
   }
-  .eyebrow::before{
-    content:"";
-    width:22px;
-    height:1px;
-    background:var(--accent-dark);
-    display:inline-block;
-  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--accent-dark); display:inline-block; }
 
   /* ===== HEADER ===== */
   header{
-    position:sticky;
-    top:0;
-    z-index:100;
+    position:sticky; top:0; z-index:100;
     background:rgba(255, 255, 255, 0.94);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--paper-line);
   }
   .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 32px;
-    max-width:1180px;
-    margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1180px; margin:0 auto;
   }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:11px;
-  }
-  .brand-mark{
-    width:34px; height:34px;
-    flex-shrink:0;
-  }
+  .brand{ display:flex; align-items:center; gap:11px; }
+  .brand-mark{ width:34px; height:34px; flex-shrink:0; }
   .brand-text{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    font-size:21px;
-    letter-spacing:-0.01em;
-    color:var(--ink);
+    font-family:'Fraunces', serif; font-weight:700; font-size:21px;
+    letter-spacing:-0.01em; color:var(--ink);
   }
   .brand-text span{ color:var(--accent); }
   .brand-sub{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px;
-    letter-spacing:0.06em;
-    color:var(--ink-soft);
-    text-transform:uppercase;
-    margin-top:1px;
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:0.06em; color:var(--ink-soft); text-transform:uppercase; margin-top:1px;
   }
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:34px;
-  }
-  .nav-links a{
-    font-size:14.5px;
-    font-weight:500;
-    color:var(--ink-soft);
-    position:relative;
-    padding:4px 0;
-  }
+  .nav-links{ display:flex; align-items:center; gap:34px; }
+  .nav-links a{ font-size:14.5px; font-weight:500; color:var(--ink-soft); position:relative; padding:4px 0; }
   .nav-links a:hover{ color:var(--ink); }
-  .nav-cta{
-    display:flex;
-    align-items:center;
-    gap:16px;
-  }
+  .nav-cta{ display:flex; align-items:center; gap:16px; }
   .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:12px 22px;
-    border-radius:var(--radius);
-    font-size:14px;
-    font-weight:600;
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 22px; border-radius:var(--radius); font-size:14px; font-weight:600;
     border:1px solid transparent;
     transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     white-space:nowrap;
   }
-  .btn-accent{
-    background:var(--accent);
-    color:var(--cream-white);
-  }
+  .btn-accent{ background:var(--accent); color:var(--cream-white); }
   .btn-accent:hover{ background:var(--accent-dark); transform:translateY(-1px); box-shadow:var(--shadow); }
-  .btn-ink{
-    background:var(--ink);
-    color:var(--paper);
-  }
+  .btn-ink{ background:var(--ink); color:var(--paper); }
   .btn-ink:hover{ background:#021c16; transform:translateY(-1px); }
-  .btn-line{
-    background:transparent;
-    color:var(--ink);
-    border:1px solid var(--ink);
-  }
+  .btn-line{ background:transparent; color:var(--ink); border:1px solid var(--ink); }
   .btn-line:hover{ background:var(--ink); color:var(--paper); }
-  .btn-ghost-paper{
-    background:transparent;
-    color:var(--paper);
-    border:1px solid rgba(255,255,255,0.5);
-  }
+  .btn-ghost-paper{ background:transparent; color:var(--paper); border:1px solid rgba(255,255,255,0.5); }
   .btn-ghost-paper:hover{ background:rgba(255,255,255,0.15); }
 
-  .menu-toggle{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    background:none; border:none;
-  }
-  .menu-toggle span{
-    width:24px; height:2px; background:var(--ink);
-  }
+  .menu-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; }
+  .menu-toggle span{ width:24px; height:2px; background:var(--ink); }
 
   /* ===== HERO ===== */
-  .hero{
-    padding:76px 0 40px;
-  }
-  .hero-top{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:60px;
-    align-items:end;
-    margin-bottom:44px;
-  }
-  .hero h1{
-    font-size:clamp(36px, 4.6vw, 60px);
-    margin-top:18px;
-    color:var(--ink);
-  }
-  .hero h1 em{
-    font-style:italic;
-    color:var(--accent-dark);
-  }
-  .hero-lede{
-    font-size:17px;
-    color:var(--ink-soft);
-    max-width:52ch;
-    margin-top:20px;
-  }
+  .hero{ padding:76px 0 40px; }
+  .hero-top{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:end; margin-bottom:44px; }
+  .hero h1{ font-size:clamp(36px, 4.6vw, 60px); margin-top:18px; color:var(--ink); }
+  .hero h1 em{ font-style:italic; color:var(--accent-dark); }
+  .hero-lede{ font-size:17px; color:var(--ink-soft); max-width:52ch; margin-top:20px; }
   .hero-side{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    color:var(--ink-soft);
-    border-left:2px solid var(--accent);
-    padding-left:18px;
-    line-height:1.7;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);
+    border-left:2px solid var(--accent); padding-left:18px; line-height:1.7;
+  }
+
+  /* photo strip under hero copy */
+  .hero-photos{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:14px;
+    margin-bottom:40px;
+  }
+  .hero-photo{
+    position:relative;
+    border-radius:6px;
+    overflow:hidden;
+    height:200px;
+    border:1px solid var(--paper-line);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .hero-photo .cap{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(0deg, rgba(2,44,34,0.75), transparent);
+    color:#fff; font-family:'IBM Plex Mono', monospace; font-size:11px;
+    padding:20px 12px 10px;
   }
 
   /* search bar */
   .search-bar{
-    background:var(--cream-white);
-    border:1px solid var(--paper-line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:20px;
-    display:grid;
-    grid-template-columns:1.1fr 1fr 1fr auto;
-    gap:14px;
-    margin-bottom:56px;
+    background:var(--cream-white); border:1px solid var(--paper-line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px; display:grid;
+    grid-template-columns:1.1fr 1fr 1fr auto; gap:14px; margin-bottom:56px;
   }
-  .field{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-  }
+  .field{ display:flex; flex-direction:column; gap:6px; }
   .field label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--ink-soft);
   }
   .field select, .field input{
-    border:1px solid var(--paper-line);
-    background:var(--paper);
-    padding:11px 12px;
-    font-family:'Work Sans', sans-serif;
-    font-size:14.5px;
-    color:var(--ink);
-    border-radius:2px;
+    border:1px solid var(--paper-line); background:var(--paper); padding:11px 12px;
+    font-family:'Work Sans', sans-serif; font-size:14.5px; color:var(--ink); border-radius:2px;
   }
-  .field select:focus, .field input:focus{
-    outline:2px solid var(--accent);
-    outline-offset:1px;
-  }
+  .field select:focus, .field input:focus{ outline:2px solid var(--accent); outline-offset:1px; }
   .search-bar .btn{ align-self:end; height:44px; }
 
   /* ===== MAP / SIGNATURE ELEMENT ===== */
-  .survey{
-    background:var(--ink);
-    border-radius:6px;
-    padding:40px;
-    color:var(--paper);
-    position:relative;
-    overflow:hidden;
-  }
+  .survey{ background:var(--ink); border-radius:6px; padding:40px; color:var(--paper); position:relative; overflow:hidden; }
   .survey::before{
-    content:"";
-    position:absolute;
-    inset:0;
+    content:""; position:absolute; inset:0;
     background-image:
       linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size:28px 28px;
-    pointer-events:none;
+    background-size:28px 28px; pointer-events:none;
   }
-  .survey-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:20px;
-    margin-bottom:26px;
-    position:relative;
-    flex-wrap:wrap;
-  }
-  .survey-title{
-    font-family:'Fraunces', serif;
-    font-size:24px;
-    font-weight:600;
-    color:var(--paper);
-  }
-  .survey-loc{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:#A7F3D0;
-    margin-top:6px;
-  }
-  .legend{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color:#D1FAE5;
-  }
-  .legend span{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-  }
-  .legend i{
-    width:10px; height:10px; border-radius:2px; display:inline-block;
-  }
+  .survey-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:26px; position:relative; flex-wrap:wrap; }
+  .survey-title{ font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--paper); }
+  .survey-loc{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#A7F3D0; margin-top:6px; }
+  .legend{ display:flex; gap:18px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#D1FAE5; }
+  .legend span{ display:inline-flex; align-items:center; gap:7px; }
+  .legend i{ width:10px; height:10px; border-radius:2px; display:inline-block; }
 
-  .plot-grid{
-    position:relative;
-    display:grid;
-    grid-template-columns:repeat(10, 1fr);
-    gap:6px;
-    margin-bottom:14px;
-  }
+  .plot-grid{ position:relative; display:grid; grid-template-columns:repeat(10, 1fr); gap:6px; margin-bottom:14px; }
   .plot{
-    aspect-ratio:1/0.85;
-    border-radius:2px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
-    font-weight:600;
-    cursor:pointer;
-    transition:transform 0.12s ease, filter 0.12s ease;
-    border:1px solid rgba(0,0,0,0.12);
+    aspect-ratio:1/0.85; border-radius:2px; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:600; cursor:pointer;
+    transition:transform 0.12s ease, filter 0.12s ease; border:1px solid rgba(0,0,0,0.12);
   }
   .plot:hover{ transform:translateY(-2px) scale(1.05); filter:brightness(1.1); z-index:2; }
   .plot.available{ background:var(--plot-available-bg); color:#064E3B; }
@@ -340,332 +190,222 @@
   .plot.sold{ background:var(--plot-sold-bg); color:#991B1B; }
 
   .plot-info{
-    position:relative;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:14px;
-    padding-top:18px;
-    border-top:1px solid rgba(255,255,255,0.15);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:#D1FAE5;
+    position:relative; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.15);
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:#D1FAE5;
   }
-  #plot-detail{
-    font-size:13px;
-    color:var(--paper);
-  }
+  #plot-detail{ font-size:13px; color:var(--paper); }
   #plot-detail b{ color:var(--accent); }
 
   /* ===== STATS ===== */
-  .stats{
-    background:var(--paper-2);
-    border-top:1px solid var(--paper-line);
-    border-bottom:1px solid var(--paper-line);
-    padding:44px 0;
-  }
-  .stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:20px;
-    text-align:center;
-  }
-  .stat-num{
-    font-family:'Fraunces', serif;
-    font-size:38px;
-    font-weight:600;
-    color:var(--accent-dark);
-  }
-  .stat-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.03em;
-    color:var(--ink-soft);
-    margin-top:6px;
-  }
+  .stats{ background:var(--paper-2); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line); padding:44px 0; }
+  .stats-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; text-align:center; }
+  .stat-num{ font-family:'Fraunces', serif; font-size:38px; font-weight:600; color:var(--accent-dark); }
+  .stat-label{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.03em; color:var(--ink-soft); margin-top:6px; }
 
   /* ===== SECTION GENERIC ===== */
   section.block{ padding:88px 0; }
-  .block-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:30px;
-    margin-bottom:46px;
-    flex-wrap:wrap;
-  }
-  .block-head h2{
-    font-size:clamp(28px,3.2vw,40px);
-    margin-top:14px;
-  }
-  .block-head p{
-    max-width:44ch;
-    color:var(--ink-soft);
-    font-size:15px;
-  }
+  .block-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:46px; flex-wrap:wrap; }
+  .block-head h2{ font-size:clamp(28px,3.2vw,40px); margin-top:14px; }
+  .block-head p{ max-width:44ch; color:var(--ink-soft); font-size:15px; }
 
-  
   /* ===== LAYOUT CARDS ===== */
-  .layouts-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:20px;
-  }
+  .layouts-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
   .layout-card{
-    background:var(--cream-white);
-    border:1px solid var(--paper-line);
-    border-radius:4px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
+    background:var(--cream-white); border:1px solid var(--paper-line); border-radius:4px;
+    overflow:hidden; display:flex; flex-direction:column;
     transition:box-shadow 0.15s ease, transform 0.15s ease;
   }
   .layout-card:hover{ box-shadow:var(--shadow); transform:translateY(-3px); }
   .layout-thumb{
-    height:120px;
-    background:
-      linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.05)),
-      repeating-linear-gradient(0deg, transparent, transparent 13px, rgba(16,185,129,0.06) 13px, rgba(16,185,129,0.06) 14px),
-      repeating-linear-gradient(90deg, transparent, transparent 13px, rgba(16,185,129,0.06) 13px, rgba(16,185,129,0.06) 14px);
+    height:130px;
     position:relative;
+    background-size: cover;
+    background-position:center;
     border-bottom:1px solid var(--paper-line);
   }
   .layout-tag{
-    position:absolute;
-    top:10px; left:10px;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
-    letter-spacing:0.05em;
-    padding:4px 8px;
-    border-radius:2px;
-    text-transform:uppercase;
+    position:absolute; top:10px; left:10px; background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    padding:4px 8px; border-radius:2px; text-transform:uppercase;
   }
-  .layout-body{
-    padding:18px 18px 20px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    flex:1;
-  }
-  .layout-body h3{
-    font-size:18px;
-    font-weight:600;
-  }
-  .layout-loc{
-    font-size:13px;
-    color:var(--ink-soft);
-  }
+  .layout-body{ padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .layout-body h3{ font-size:18px; font-weight:600; }
+  .layout-loc{ font-size:13px; color:var(--ink-soft); }
   .layout-meta{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color:var(--ink-soft);
-    display:flex;
-    justify-content:space-between;
-    border-top:1px dashed var(--paper-line);
-    padding-top:10px;
-    margin-top:auto;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; border-top:1px dashed var(--paper-line);
+    padding-top:10px; margin-top:auto;
   }
-  .layout-price{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:17px;
-    color:var(--accent-dark);
-  }
+  .layout-price{ font-family:'Fraunces', serif; font-weight:600; font-size:17px; color:var(--accent-dark); }
 
   /* ===== PROCESS (buy/sell toggle) ===== */
-  .toggle-row{
-    display:inline-flex;
-    background:var(--paper-2);
-    border:1px solid var(--paper-line);
-    border-radius:30px;
-    padding:4px;
-    margin-bottom:40px;
-  }
-  .toggle-btn{
-    padding:10px 24px;
-    border-radius:24px;
-    font-size:14px;
-    font-weight:600;
-    background:transparent;
-    border:none;
-    color:var(--ink-soft);
-  }
-  .toggle-btn.active{
-    background:var(--ink);
-    color:var(--paper);
-  }
+  .toggle-row{ display:inline-flex; background:var(--paper-2); border:1px solid var(--paper-line); border-radius:30px; padding:4px; margin-bottom:40px; }
+  .toggle-btn{ padding:10px 24px; border-radius:24px; font-size:14px; font-weight:600; background:transparent; border:none; color:var(--ink-soft); }
+  .toggle-btn.active{ background:var(--ink); color:var(--paper); }
   .process-panel{ display:none; }
   .process-panel.active{ display:grid; }
-  .process-panel{
-    grid-template-columns:repeat(4, 1fr);
-    gap:24px;
-  }
-  .process-step{
-    border-left:1px solid var(--paper-line);
-    padding-left:18px;
-    position:relative;
-  }
-  .process-step .num{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--accent-dark);
-    margin-bottom:10px;
-    display:block;
-  }
-  .process-step h4{
-    font-size:16px;
-    font-weight:600;
-    margin-bottom:8px;
-  }
-  .process-step p{
-    font-size:13.5px;
-    color:var(--ink-soft);
-  }
+  .process-panel{ grid-template-columns:repeat(4, 1fr); gap:24px; }
+  .process-step{ border-left:1px solid var(--paper-line); padding-left:18px; position:relative; }
+  .process-step .num{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent-dark); margin-bottom:10px; display:block; }
+  .process-step h4{ font-size:16px; font-weight:600; margin-bottom:8px; }
+  .process-step p{ font-size:13.5px; color:var(--ink-soft); }
 
   /* ===== TRUST GRID ===== */
-  .trust-grid{
+  .trust-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--paper-line); border:1px solid var(--paper-line); }
+  .trust-card{ background:var(--cream-white); padding:28px 24px; }
+  .trust-card .glyph{ width:38px; height:38px; margin-bottom:16px; }
+  .trust-card h4{ font-size:15.5px; font-weight:600; margin-bottom:8px; }
+  .trust-card p{ font-size:13px; color:var(--ink-soft); }
+
+  /* ===== GALLERY ===== */
+  .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--paper-line);
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+  }
+  .gallery-item{
+    border-radius:6px;
+    overflow:hidden;
     border:1px solid var(--paper-line);
+    height:180px;
+    position:relative;
   }
-  .trust-card{
-    background:var(--cream-white);
-    padding:28px 24px;
-  }
-  .trust-card .glyph{
-    width:38px; height:38px;
-    margin-bottom:16px;
-  }
-  .trust-card h4{
-    font-size:15.5px;
-    font-weight:600;
-    margin-bottom:8px;
-  }
-  .trust-card p{
-    font-size:13px;
-    color:var(--ink-soft);
+  .gallery-item img{ width:100%; height:100%; object-fit:cover; transition:transform 0.3s ease; }
+  .gallery-item:hover img{ transform:scale(1.06); }
+  .gallery-item .cap{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(0deg, rgba(2,44,34,0.8), transparent);
+    color:#fff; font-family:'IBM Plex Mono', monospace; font-size:11px; padding:24px 12px 10px;
   }
 
   /* ===== TESTIMONIALS ===== */
-  .testi-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-  }
-  .testi-card{
-    background:var(--paper-2);
-    border:1px solid var(--paper-line);
-    padding:26px;
-    border-radius:4px;
-  }
-  .testi-quote{
-    font-family:'Fraunces', serif;
-    font-size:17px;
-    font-style:italic;
-    color:var(--ink);
-    margin-bottom:18px;
-  }
-  .testi-name{
-    font-weight:600;
-    font-size:13.5px;
-  }
-  .testi-loc{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    color:var(--ink-soft);
-    text-transform:uppercase;
-  }
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .testi-card{ background:var(--paper-2); border:1px solid var(--paper-line); padding:26px; border-radius:4px; }
+  .testi-quote{ font-family:'Fraunces', serif; font-size:17px; font-style:italic; color:var(--ink); margin-bottom:18px; }
+  .testi-name{ font-weight:600; font-size:13.5px; }
+  .testi-loc{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); text-transform:uppercase; }
 
   /* ===== CTA BANNER ===== */
   .cta-banner{
-    background:var(--ink);
-    color:var(--paper);
-    border-radius:6px;
-    padding:60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
-    flex-wrap:wrap;
-    position:relative;
-    overflow:hidden;
+    background:var(--ink); color:var(--paper); border-radius:6px; padding:60px;
+    display:flex; justify-content:space-between; align-items:center; gap:30px;
+    flex-wrap:wrap; position:relative; overflow:hidden;
   }
   .cta-banner::before{
-    content:"";
-    position:absolute;
-    right:-60px; top:-60px;
-    width:220px; height:220px;
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:50%;
+    content:""; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+    border:1px solid rgba(255,255,255,0.15); border-radius:50%;
   }
-  .cta-banner h2{
-    color:var(--paper);
-    font-size:clamp(24px,2.6vw,32px);
-    max-width:16ch;
-  }
+  .cta-banner h2{ color:var(--paper); font-size:clamp(24px,2.6vw,32px); max-width:16ch; }
   .cta-banner p{ color:#A7F3D0; margin-top:10px; font-size:14px; max-width:40ch; }
   .cta-actions{ display:flex; gap:14px; flex-wrap:wrap; }
 
   /* ===== FOOTER ===== */
-  footer{
-    background:var(--paper-2);
-    border-top:1px solid var(--paper-line);
-    padding:64px 0 28px;
-  }
-  .footer-grid{
-    display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1.2fr;
-    gap:40px;
-    margin-bottom:50px;
-  }
-  .footer-brand p{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    margin-top:14px;
-    max-width:32ch;
-  }
+  footer{ background:var(--paper-2); border-top:1px solid var(--paper-line); padding:64px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; margin-bottom:50px; }
+  .footer-brand p{ font-size:13.5px; color:var(--ink-soft); margin-top:14px; max-width:32ch; }
   .footer-col h5{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--accent-dark);
-    margin-bottom:16px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent-dark); margin-bottom:16px;
   }
   .footer-col ul li{ margin-bottom:10px; }
-  .footer-col ul li a{
-    font-size:13.5px;
-    color:var(--ink-soft);
-  }
+  .footer-col ul li a{ font-size:13.5px; color:var(--ink-soft); }
   .footer-col ul li a:hover{ color:var(--ink); }
   .footer-bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:12px;
-    padding-top:26px;
-    border-top:1px solid var(--paper-line);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color:var(--ink-soft);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:26px; border-top:1px solid var(--paper-line);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft);
   }
+
+  /* ===== CONTACT MODAL ===== */
+  .modal-overlay{
+    display:none;
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(2,44,34,0.55);
+    backdrop-filter:blur(3px);
+    align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-card{
+    background:var(--cream-white);
+    border-radius:8px;
+    max-width:460px;
+    width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    box-shadow:0 24px 60px rgba(2,44,34,0.35);
+    position:relative;
+    animation:modalIn 0.2s ease;
+  }
+  @keyframes modalIn{ from{ opacity:0; transform:translateY(12px) scale(0.98);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .modal-head{
+    background:var(--ink);
+    color:var(--paper);
+    padding:26px 28px;
+    border-radius:8px 8px 0 0;
+  }
+  .modal-head .eyebrow{ color:#6EE7B7; }
+  .modal-head .eyebrow::before{ background:#6EE7B7; }
+  .modal-head h3{ font-size:22px; margin-top:10px; }
+  .modal-head p{ font-size:13px; color:#A7F3D0; margin-top:8px; }
+  .modal-close{
+    position:absolute; top:16px; right:16px;
+    width:30px; height:30px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    color:var(--paper);
+    border:none;
+    font-size:16px;
+    line-height:1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .modal-close:hover{ background:rgba(255,255,255,0.22); }
+  .modal-body{ padding:26px 28px 28px; }
+  .modal-field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .modal-field label{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--ink-soft);
+  }
+  .modal-field input, .modal-field textarea{
+    border:1px solid var(--paper-line); background:var(--paper-2); padding:12px 13px;
+    font-family:'Work Sans', sans-serif; font-size:14.5px; color:var(--ink); border-radius:4px;
+    resize:vertical;
+  }
+  .modal-field input:focus, .modal-field textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; background:#fff; }
+  .modal-error{ font-size:12px; color:#DC2626; margin-top:4px; display:none; }
+  .modal-field.invalid input, .modal-field.invalid textarea{ border-color:#DC2626; }
+  .modal-field.invalid .modal-error{ display:block; }
+  .modal-submit{ width:100%; margin-top:6px; height:48px; }
+  .modal-success{
+    display:none;
+    text-align:center;
+    padding:20px 4px 6px;
+  }
+  .modal-success.show{ display:block; }
+  .modal-success .tick{
+    width:52px; height:52px; border-radius:50%;
+    background:var(--plot-available-bg);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 16px;
+  }
+  .modal-success h4{ font-size:18px; margin-bottom:8px; }
+  .modal-success p{ font-size:13.5px; color:var(--ink-soft); }
+  .modal-body.hide{ display:none; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 980px){
     .nav-links{ display:none; }
     .menu-toggle{ display:flex; }
     .hero-top{ grid-template-columns:1fr; gap:34px; }
+    .hero-photos{ grid-template-columns:1fr 1fr; }
+    .hero-photos .hero-photo:first-child{ grid-column:1/-1; height:220px; }
     .search-bar{ grid-template-columns:1fr 1fr; }
     .search-bar .btn{ grid-column:1/-1; }
     .stats-grid{ grid-template-columns:repeat(2,1fr); gap:30px; }
     .layouts-grid{ grid-template-columns:repeat(2,1fr); }
     .trust-grid{ grid-template-columns:repeat(2,1fr); }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
     .testi-grid{ grid-template-columns:1fr; }
     .process-panel{ grid-template-columns:repeat(2,1fr); }
     .footer-grid{ grid-template-columns:1fr 1fr; }
@@ -674,10 +414,14 @@
   @media (max-width: 600px){
     .wrap{ padding:0 20px; }
     .nav{ padding:16px 20px; }
+    .hero-photos{ grid-template-columns:1fr; }
+    .hero-photos .hero-photo:first-child{ height:180px; }
+    .hero-photo{ height:150px; }
     .search-bar{ grid-template-columns:1fr; }
     .stats-grid{ grid-template-columns:1fr 1fr; }
     .layouts-grid{ grid-template-columns:1fr; }
     .trust-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr 1fr; }
     .process-panel{ grid-template-columns:1fr; }
     .footer-grid{ grid-template-columns:1fr; gap:30px; }
     .cta-banner{ padding:36px 24px; flex-direction:column; align-items:flex-start; }
@@ -686,9 +430,7 @@
     section.block{ padding:60px 0; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-  }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
 
   :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 </style>
@@ -716,10 +458,10 @@
       <a href="#sell">Sell Your Land</a>
       <a href="#layouts">Layouts</a>
       <a href="#trust">Why Us</a>
-      <a href="#contact">Contact</a>
+      <a href="#" onclick="openContact(); return false;">Contact</a>
     </div>
     <div class="nav-cta">
-      <a href="tel:+919999999999" class="btn btn-line" style="display:none" id="phone-btn">+91 98765 43210</a>
+      <button class="btn btn-line" onclick="openContact()">Contact Us</button>
       <a href="#sell" class="btn btn-accent">List Your Land</a>
     </div>
     <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
@@ -743,6 +485,22 @@
         02 / Site visits arranged within 48 hrs<br>
         03 / Zero brokerage for buyers<br>
         04 / Registration &amp; stamp duty support
+      </div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="hero-photos">
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1697627903173-e22b6e04734d?auto=format&fit=crop&w=1200&q=70" alt="Open residential land plot with trees, Bhavnagar area">
+        <div class="cap">Shantivan Residency — Waghawadi Road</div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1663436296541-f1958f6d3b59?auto=format&fit=crop&w=800&q=70" alt="Cleared residential plot ready for construction">
+        <div class="cap">Ghogha Green Park</div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1586803555480-d98e84e39cf2?auto=format&fit=crop&w=800&q=70" alt="Open plot of land under a clear sky">
+        <div class="cap">Vartej Vista</div>
       </div>
     </div>
 
@@ -840,7 +598,7 @@
 
     <div class="layouts-grid">
       <div class="layout-card">
-        <div class="layout-thumb"><span class="layout-tag">12 plots left</span></div>
+        <div class="layout-thumb" style="background-image:url('https://images.housivity.com/uploads/2024/11/139-Sardar-Nagar-Bhavnagar-3-scaled.jpg')"><span class="layout-tag">12 plots left</span></div>
         <div class="layout-body">
           <h3>Shantivan Residency</h3>
           <div class="layout-loc">Waghawadi Road</div>
@@ -849,7 +607,7 @@
         </div>
       </div>
       <div class="layout-card">
-        <div class="layout-thumb"><span class="layout-tag">New launch</span></div>
+        <div class="layout-thumb" style="background-image:url('https://images.unsplash.com/photo-1626834478854-9b5aefd826fd?auto=format&fit=crop&w=600&q=70')"><span class="layout-tag">New launch</span></div>
         <div class="layout-body">
           <h3>Ghogha Green Park</h3>
           <div class="layout-loc">Ghogha Circle</div>
@@ -858,7 +616,7 @@
         </div>
       </div>
       <div class="layout-card">
-        <div class="layout-thumb"><span class="layout-tag">Highway facing</span></div>
+        <div class="layout-thumb" style="background-image:url('https://images.unsplash.com/photo-1599809563132-4b678fb6f611?auto=format&fit=crop&w=600&q=70')"><span class="layout-tag">Highway facing</span></div>
         <div class="layout-body">
           <h3>Vartej Vista</h3>
           <div class="layout-loc">Rajkot Highway, Vartej</div>
@@ -867,7 +625,7 @@
         </div>
       </div>
       <div class="layout-card">
-        <div class="layout-thumb"><span class="layout-tag">Nearly sold out</span></div>
+        <div class="layout-thumb" style="background-image:url('https://images.unsplash.com/photo-1624856472328-bfcf71c34741?auto=format&fit=crop&w=600&q=70')"><span class="layout-tag">Nearly sold out</span></div>
         <div class="layout-body">
           <h3>Sidsar Sarovar Layout</h3>
           <div class="layout-loc">Sidsar Road</div>
@@ -972,6 +730,35 @@
     </div>
   </section>
 
+  <!-- ============ GALLERY ============ -->
+  <section class="block wrap">
+    <div class="block-head">
+      <div>
+        <div class="eyebrow">A closer look</div>
+        <h2>Real plots, walked and photographed by our team</h2>
+      </div>
+      <p>A glimpse of the land you'll be visiting — every photo below is from a layout currently open for booking.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1663436296541-f1958f6d3b59?auto=format&fit=crop&w=500&q=70" alt="Cleared open land plot">
+        <div class="cap">Boundary-marked plot</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1586803555480-d98e84e39cf2?auto=format&fit=crop&w=500&q=70" alt="Green open field plot under sky">
+        <div class="cap">Layout under development</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1599809563132-4b678fb6f611?auto=format&fit=crop&w=500&q=70" alt="Open brown field land plot">
+        <div class="cap">Highway-facing plot</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1626834478854-9b5aefd826fd?auto=format&fit=crop&w=500&q=70" alt="Green field near hills">
+        <div class="cap">Residential corner plot</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TESTIMONIALS ============ -->
   <section class="block wrap">
     <div class="block-head">
@@ -1008,7 +795,7 @@
       </div>
       <div class="cta-actions">
         <a href="#" class="btn btn-accent">List Your Land — It's Free</a>
-        <a href="tel:+919999999999" class="btn btn-ghost-paper">Call +91 63528 66643</a>
+        <button class="btn btn-ghost-paper" onclick="openContact()">Contact Us</button>
       </div>
     </div>
   </section>
@@ -1045,8 +832,9 @@
         <h5>Contact</h5>
         <ul>
           <li>Waghawadi Road, Bhavnagar, Gujarat 364001</li>
-          <li><a href="tel:+9163528 66643">+91 63528 66643</a></li>
+          <li><a href="tel:+916352866643">+91 63528 66643</a></li>
           <li><a href="mailto:bhavnagarhub639@gmail.com">bhavnagarhub639@gmail.com</a></li>
+          <li><button class="btn btn-accent" style="margin-top:8px;" onclick="openContact()">Contact Us</button></li>
         </ul>
       </div>
     </div>
@@ -1056,6 +844,50 @@
     </div>
   </div>
 </footer>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contact-modal" onclick="if(event.target===this) closeContact()">
+  <div class="modal-card">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeContact()" aria-label="Close">✕</button>
+      <div class="eyebrow">Get in touch</div>
+      <h3>Contact BhavnagarHub</h3>
+      <p>Share your details and our team will call you back, usually within a few hours.</p>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <form id="contact-form" onsubmit="return submitContactForm(event)" novalidate>
+        <div class="modal-field" id="field-name">
+          <label for="c-name">Full name</label>
+          <input type="text" id="c-name" name="name" placeholder="e.g. Rajesh Barot" autocomplete="name">
+          <span class="modal-error">Please enter your name.</span>
+        </div>
+        <div class="modal-field" id="field-email">
+          <label for="c-email">Email address</label>
+          <input type="email" id="c-email" name="email" placeholder="you@example.com" autocomplete="email">
+          <span class="modal-error">Please enter a valid email address.</span>
+        </div>
+        <div class="modal-field" id="field-mobile">
+          <label for="c-mobile">Mobile number</label>
+          <input type="tel" id="c-mobile" name="mobile" placeholder="10-digit mobile number" autocomplete="tel">
+          <span class="modal-error">Please enter a valid 10-digit mobile number.</span>
+        </div>
+        <div class="modal-field" id="field-message">
+          <label for="c-message">Message (optional)</label>
+          <textarea id="c-message" name="message" rows="3" placeholder="Tell us which locality or plot you're interested in..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent modal-submit">Send Message</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modal-success">
+      <div class="tick">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Thanks, we've got your details!</h4>
+      <p>Our team will reach out to you shortly. You can close this window now.</p>
+      <button class="btn btn-ink" style="margin-top:20px; width:100%;" onclick="closeContact()">Close</button>
+    </div>
+  </div>
+</div>
 
 <script>
   // Build the interactive plot grid
@@ -1096,6 +928,153 @@
     document.getElementById('tab-sell').classList.toggle('active', which==='sell');
     document.getElementById('panel-buy').classList.toggle('active', which==='buy');
     document.getElementById('panel-sell').classList.toggle('active', which==='sell');
+  }
+
+  // ===== Contact modal logic =====
+  function openContact(){
+    document.getElementById('contact-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // reset to form view each time it's opened fresh
+    document.getElementById('modal-body').classList.remove('hide');
+    document.getElementById('modal-success').classList.remove('show');
+  }
+  function closeContact(){
+    document.getElementById('contact-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeContact();
+  });
+
+  // ===== GOOGLE SHEETS API =====
+  // Paste your deployed Google Apps Script Web App URL here.
+  const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycby4fv-cerPm-8H4tU9n4PtQLNuuR5uVuygRV2fTWlXhTMvEsc5RpBZTsTmNmUGcc8DFmA/exec";
+
+  async function submitContactForm(e){
+    e.preventDefault();
+    let valid = true;
+
+    const nameEl = document.getElementById('c-name');
+    const emailEl = document.getElementById('c-email');
+    const mobileEl = document.getElementById('c-mobile');
+    const messageEl = document.getElementById('c-message');
+
+    const nameField = document.getElementById('field-name');
+    const emailField = document.getElementById('field-email');
+    const mobileField = document.getElementById('field-mobile');
+
+    nameField.classList.remove('invalid');
+    emailField.classList.remove('invalid');
+    mobileField.classList.remove('invalid');
+
+    if(nameEl.value.trim().length < 2){
+      nameField.classList.add('invalid');
+      valid = false;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(emailEl.value.trim())){
+      emailField.classList.add('invalid');
+      valid = false;
+    }
+
+    const mobilePattern = /^[6-9]\d{9}$/;
+    if(!mobilePattern.test(mobileEl.value.trim().replace(/\D/g,''))){
+      mobileField.classList.add('invalid');
+      valid = false;
+    }
+
+    if(!valid) return false;
+
+
+    const submitBtn = document.querySelector('.modal-submit');
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    const formData = new URLSearchParams();
+    formData.append('fullName', nameEl.value.trim());
+    formData.append('email', emailEl.value.trim());
+    formData.append('mobile', mobileEl.value.trim());
+    formData.append('message', messageEl.value.trim());
+
+        const response = await fetch(
+  GOOGLE_SHEET_API_URL,
+  {
+    method: "POST",
+
+    body: JSON.stringify({
+      fullName:
+        nameEl.value.trim(),
+
+      email:
+        emailEl.value.trim(),
+
+      mobile:
+        mobileEl.value
+          .trim()
+          .replace(/\D/g, ""),
+
+      message:
+        messageEl.value.trim()
+    })
+  }
+);
+
+
+const responseText =
+  await response.text();
+
+
+console.log(
+  "Status:",
+  response.status
+);
+
+console.log(
+  "Response:",
+  responseText
+);
+
+
+if (!response.ok) {
+
+  throw new Error(
+    "Server returned status " +
+    response.status
+  );
+
+}
+
+
+let result = {};
+
+if (responseText) {
+
+  result =
+    JSON.parse(responseText);
+
+}
+
+
+if (result.success) {
+
+  alert(
+    "Message saved successfully!"
+  );
+
+  form.reset();
+
+} else {
+
+  throw new Error(
+    result.message ||
+    "Data was not saved"
+  );
+
+}
+
+    return false;
   }
 </script>
 
