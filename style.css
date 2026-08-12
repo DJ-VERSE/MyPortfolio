@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    
     transition: all 0.4s ease;;
 }
 
@@ -36,31 +37,59 @@ body.dark{
 
 nav{
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 0;
     height: 70px;
     width: 100%;
-    background-color: var(--nav-color);
+    
     z-index: 100;
     
 }
 
-body.dark nav{
-    border: 1px solid #393838;
-
-}
-
-nav .nav-bar{
+body.dark .nav-bar{
     position: relative;
-    height: 100%;
+    height: 90%;
     max-width: 1000px;
     width: 100%;
-    background-color: var(--nav-color);
+    inset: 0;
     margin: 0 auto;
     padding: 0 30px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    border-radius: 15px;
+     background: rgba(243, 232, 255, 0.043);
+   backdrop-filter:         blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+    box-shadow: 
+    0 0 0 0.5px rgba(255,255,255,0.10) inset,
+    0 8px 32px rgba(0,0,0,0.25),
+    0 2px 8px  rgba(0,0,0,0.15),
+    0 1px 0    rgba(255,255,255,0.40) inset;
+
+
+}
+body .nav-bar{
+    position: relative;
+    height: 90%;
+    max-width: 1000px;
+    width: 100%;
+    
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    background: rgba(243, 232, 255, 0.043);
+   backdrop-filter:         blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+    box-shadow: 
+    0 0 0 0.5px rgba(255,255,255,0.10) inset,
+    0 8px 32px rgba(0,0,0,0.25),
+    0 2px 8px  rgba(0,0,0,0.15),
+    0 1px 0    rgba(255,255,255,0.40) inset;
+      
 }
 
 nav .nav-bar .sidebarOpen{
@@ -247,6 +276,13 @@ body.dark .search-field i{
     nav .nav-bar .sidebarOpen{
         display: block;
     }
+    body .nav-bar{
+        width: 90%;
+    }
+    body.dark .nav-bar{
+        width: 90%;
+    }
+
 
     .menu{
         position: fixed;
