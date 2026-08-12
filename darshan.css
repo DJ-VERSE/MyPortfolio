@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 * {
@@ -12,6 +13,7 @@ html {
 body {
     background: #080808;
     color: #fff;
+    overflow-x: hidden;
 }
 
 
